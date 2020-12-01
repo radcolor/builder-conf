@@ -1,0 +1,23 @@
+kind: pipeline
+name: BOB-beta
+
+clone:
+  disable: true
+
+steps:
+- name: Beta Build
+  image: whynothugo/makepkg
+  environment:
+    GITHUB_TOKEN:
+      from_secret: GITHUB_TOKEN
+    TELEGRAM_CHAT:
+      from_secret: TELEGRAM_CHAT
+    TELEGRAM_TOKEN:
+      from_secret: TELEGRAM_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - "export BOT_TOKEN"
+    - sudo pacman -Sy base-devel repo python2 perl multilib-devel cmake svn clang lzip patchelf inetutils python2-distlib nsjail git gnupg flex bison gperf unzip sdl wxgtk squashfs-tools libpng zlib libusb libusb-compat readline inetutils gcc-multilib gcc-libs-multilib libtool-multilib bc llvm ninja curl wget zip git --noconfirm
+    - cd /home/notroot
+    - git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/derp_build -b master && cd derp_build
+    - bash setup.sh
