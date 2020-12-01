@@ -1,0 +1,21 @@
+kind: pipeline
+name: Alpha Create
+
+clone:
+  disable: true
+
+steps:
+- name: CBE
+  image: archlinux:latest
+  environment:
+      BOT_TOKEN:
+        from_secret: BOT_TOKEN
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - "export BOT_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel curl git python python-pip --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - bash snippets/alpha-create
