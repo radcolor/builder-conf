@@ -1,0 +1,158 @@
+kind: pipeline
+name: snipper-alpha OOO
+
+clone:
+  disable: true
+
+steps:
+- name: snipper1
+  image: archlinux:latest
+  environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel bc llvm curl jre-openjdk zip wget git --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - script -c "bash -x snippets/alpha-build --oldk --olds --lessc" build.log && bash /drone/src/snippets/alpha-log
+
+---
+kind: pipeline
+name: snipper-alpha NOO
+
+clone:
+  disable: true
+
+steps:
+- name: snipper2
+  image: archlinux:latest
+  environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel bc llvm curl jre-openjdk zip wget git --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - script -c "bash -x snippets/alpha-build --newk --olds --lessc" build.log && bash /drone/src/snippets/alpha-log
+
+---
+kind: pipeline
+name: snipper-alpha ONO
+
+clone:
+  disable: true
+
+steps:
+- name: snipper3
+  image: archlinux:latest
+  environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel bc llvm curl jre-openjdk zip wget git --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - script -c "bash -x snippets/alpha-build --oldk --news --lessc" build.log && bash /drone/src/snippets/alpha-log
+
+---
+kind: pipeline
+name: snipper-alpha NNO
+
+clone:
+  disable: true
+
+steps:
+- name: snipper4
+  image: archlinux:latest
+  environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel bc llvm curl jre-openjdk zip wget git --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - script -c "bash -x snippets/alpha-build --newk --news --lessc" build.log && bash /drone/src/snippets/alpha-log
+
+---
+kind: pipeline
+name: snipper-alpha OON
+
+clone:
+  disable: true
+
+steps:
+- name: snipper5
+  image: archlinux:latest
+  environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel bc llvm curl jre-openjdk zip wget git --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - script -c "bash -x snippets/alpha-build --oldk --olds --oftenc" build.log && bash /drone/src/snippets/alpha-log
+
+---
+kind: pipeline
+name: snipper-alpha NON
+
+clone:
+  disable: true
+
+steps:
+- name: snipper6
+  image: archlinux:latest
+  environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel bc llvm curl jre-openjdk zip wget git --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - script -c "bash -x snippets/alpha-build --newk --olds --oftenc" build.log && bash /drone/src/snippets/alpha-log
+
+---
+kind: pipeline
+name: snipper-alpha ONN
+
+clone:
+  disable: true
+
+steps:
+- name: snipper7
+  image: archlinux:latest
+  environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel bc llvm curl jre-openjdk zip wget git --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - script -c "bash -x snippets/alpha-build --oldk --news --oftenc" build.log && bash /drone/src/snippets/alpha-log
+
+---
+kind: pipeline
+name: snipper-alpha NNN
+
+clone:
+  disable: true
+
+steps:
+- name: snipper8
+  image: archlinux:latest
+  environment:
+      GITHUB_TOKEN:
+        from_secret: GITHUB_TOKEN
+  commands:
+    - "export GITHUB_TOKEN"
+    - curl https://raw.githubusercontent.com/theradcolor/lazyscripts/master/etc/workaround > workaround && bash workaround
+    - pacman -Sy base-devel bc llvm curl jre-openjdk zip wget git --noconfirm
+    - "git clone --depth=1 --quiet https://theradcolor:$GITHUB_TOKEN@github.com/theradcolor/snippets -b master"
+    - script -c "bash -x snippets/alpha-build --newk --news --oftenc" build.log && bash /drone/src/snippets/alpha-log
